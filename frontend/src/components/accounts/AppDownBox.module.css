@@ -1,0 +1,14 @@
+#appDownBox {text-align: center; width: 350px;}
+
+.ment {display: inline-block; font-size: 14px; color: #262626; margin: 10px 20px;}
+
+
+.linkBox {
+  display: flex; justify-content: center;
+  width: 350px; height: 44px;
+  margin: 10px 0;
+}
+
+.appleLink {margin: 0 8px 0 0;}
+.apple {width: 136px; height: 40px;}
+.google {width: 136px; height: 40px;}

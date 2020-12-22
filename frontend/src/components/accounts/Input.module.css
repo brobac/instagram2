@@ -1,0 +1,10 @@
+input {width: 266px; height: 36px; font-size: 13px;
+  background-color: #fafafa; border: 0.5px solid #dfdfdf; padding: 9px; box-sizing: border-box;
+  border-radius: 3px; margin-bottom: 6px;
+}
+input::placeholder {
+  color: #7f7f7f;
+}
+input:focus {
+  outline: #7f7f7f solid 0.5px;
+}

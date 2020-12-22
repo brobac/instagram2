@@ -1,0 +1,26 @@
+#wrap {}
+#contents {display: flex; justify-content: center; align-items: center;
+  height: 750px;}
+#footer {}
+
+
+
+/* 컨텐츠 */
+#contents .container {}
+#contents .container .row {}
+#contents .container .row .contents {display: flex;  justify-content: center; align-items: center;}
+
+
+
+
+/* 푸터 */
+#footer .container {margin: 52px;}
+#footer .container .row {}
+#footer .container .row .footer {}
+#footer .container .row .footer .line1 {text-align: center; margin-bottom: 7px;}
+#footer .container .row .footer .line1 li{display: inline-block; margin-right: 15px;}
+#footer .container .row .footer .line1 li a {font-size: 12px; color: #8e8e8e;}
+#footer .container .row .footer .line2  {text-align: center;}
+#footer .container .row .footer .line2 li {display: inline-block;  margin-right: 15px;}
+#footer .container .row .footer .line2 li a {font-size: 12px; color: #8e8e8e;}
+#footer .container .row .footer  address {text-align: center; font-size: 12px; color: #8e8e8e; margin: 12px 0;}
