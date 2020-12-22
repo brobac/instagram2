@@ -1,12 +1,12 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import AccountRoute from "./Accounts";
+import AccountRoute from "./accounts/index";
 import Home from "./Home";
 function Root() {
   return (
     <div>
       <Route exact path="/" component={Home} />
-      <Route exact path="/accounts/" component={AccountRoute} />
+      <Route path="/accounts" component={AccountRoute} />
     </div>
   );
 }
