@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "axios-hooks": "^2.2.0",
+    "react-icons": "^4.1.0",
+    "styled-components": "^5.2.1",
+    "use-reducer-with-side-effects": "2.2.0"
+  }
+}
