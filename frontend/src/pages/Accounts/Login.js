@@ -9,16 +9,16 @@ import { FaFacebookSquare } from "react-icons/fa";
 import style from "./Signup.module.css";
 // import Input from "../../components/accounts/Input";
 import Axios from "axios";
-import useLocalStorage from "../../utils/useLocalStorage";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
 import { Route, BrowserRouter, Link, useHistory } from "react-router-dom";
+import { setToken, useAppContext } from "../../store";
 
 export default function Login() {
+  const { store, dispatch } = useAppContext();
   const history = useHistory();
-  const [jwtToken, setJwtToken] = useLocalStorage("jwtToken", "");
   const [fieldErrors, setFieldErrors] = useState({});
 
-  console.log("loaded jwtToken", jwtToken);
+  // console.log("loaded jwtToken", jwtToken);
 
   const onFinish = (values) => {
     async function fn() {
@@ -36,7 +36,8 @@ export default function Login() {
           data: { token: jwtToken },
         } = response;
 
-        setJwtToken(jwtToken);
+        dispatch(setToken(jwtToken));
+        // setJwtToken(jwtToken);
         // console.log("jwtToken", jwtToken);
 
         notification.open({
@@ -44,7 +45,7 @@ export default function Login() {
           icon: <SmileOutlined style={{ color: "#108ee9" }} />,
         });
 
-        history.push("/accounts/login");
+        history.push("/");
       } catch (error) {
         if (error.response) {
           notification.open({

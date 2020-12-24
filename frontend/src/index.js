@@ -5,13 +5,14 @@ import "./index.css";
 import Root from "./pages/index";
 import reportWebVitals from "./reportWebVitals";
 import "../src/assets/reset.css";
+import AppProvider from "./store";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AppProvider>
     <BrowserRouter>
       <Root />
     </BrowserRouter>
-  </React.StrictMode>,
+  </AppProvider>,
   document.getElementById("root")
 );
 
