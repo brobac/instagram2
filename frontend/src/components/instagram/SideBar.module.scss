@@ -1,0 +1,10 @@
+.sideBar {
+  width: 292px; height: 400px;
+  background-color: #00fefe;
+}
+
+@media (max-width: 1000px){
+  .sideBar {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+#header {
+
+}
+
+#contents {
+  display: flex;
+  justify-content: center;
+  .container {
+    display: flex;
+    position: relative;
+    width: 935px;
+    margin: 54px;
+    padding: 30px 0 0;
+
+  }
+}
+
+@media (max-width: 1000px){
+  #contents {
+    .container {
+      justify-content: center;
+    }
+  }
+  
+  .sideBar {
+    display: none;
+  }
+
+}
