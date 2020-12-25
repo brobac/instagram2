@@ -10,14 +10,24 @@ import style from "./Signup.module.css";
 // import Input from "../../components/accounts/Input";
 import Axios from "axios";
 import { SmileOutlined, FrownOutlined } from "@ant-design/icons";
-import { Route, BrowserRouter, Link, useHistory } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter,
+  Link,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import { setToken, useAppContext } from "../../store";
 
 export default function Login() {
   const { store, dispatch } = useAppContext();
+  const location = useLocation();
   const history = useHistory();
   const [fieldErrors, setFieldErrors] = useState({});
 
+  const { from: loginRedirectUrl } = location.state || {
+    from: { pathname: "/" },
+  };
   // console.log("loaded jwtToken", jwtToken);
 
   const onFinish = (values) => {
@@ -45,7 +55,7 @@ export default function Login() {
           icon: <SmileOutlined style={{ color: "#108ee9" }} />,
         });
 
-        history.push("/");
+        history.push(loginRedirectUrl);
       } catch (error) {
         if (error.response) {
           notification.open({
