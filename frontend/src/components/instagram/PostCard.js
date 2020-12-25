@@ -7,64 +7,29 @@ import useAxios from "axios-hooks";
 import Comment from "./Comment";
 import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
+import { FiMoreHorizontal } from "react-icons/fi";
+import { testImg } from "../../assets/jubin.jpg";
 
 function PostCard({ post, refetch, headers }) {
-  const { id, author, caption, photo, is_like, how_like, created_at } = post;
-  const { username, avatar } = author;
-  const [like, setLike] = useState({ is_like: is_like, how_like: how_like });
-
-  const [{ data: commentList, error, loading }, commentRefetch] = useAxios({
-    url: `http://192.168.0.8:8080/api/post/${id}/comment/`,
-    headers,
-  });
-
-  const handlelike = () => {
-    const method = like.is_like === true ? "delete" : "post";
-    Axios({
-      url: `http://192.168.0.8:8080/api/post/${id}/like/`,
-      method: method,
-      headers,
-    })
-      .then((response) => {
-        Axios({
-          url: `http://192.168.0.8:8080/api/post/${id}/`,
-          method: "get",
-          headers,
-        })
-          .then((response) => {
-            const {
-              data: { is_like: is_like, how_like: how_like },
-            } = response;
-            setLike({ is_like: is_like, how_like: how_like });
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   return (
     <div className={styles.postcard}>
       <div className={styles.list}>
         <div className={styles.top}>
           <a className={styles.avatar} href="#">
             {!avatar && <MdAccountCircle />}
-            {avatar && <img src={avatar} alt="profile" />}
+            {/* {avatar && <img src={avatar} alt="profile" />} */}
           </a>
           <a className={styles.nickname} href="#">
-            {username}
+            gark
           </a>
           <a className={styles.more} href="#">
-            ...
+            <FiMoreHorizontal />
           </a>
         </div>
         {/* <!-- //top --> */}
 
         <div className={styles.img}>
-          <img src={photo} alt="postlistimg" />
+          <img src={testImg} alt="postlistimg" />
         </div>
         {/* <!-- //img --> */}
 
