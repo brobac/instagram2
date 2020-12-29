@@ -34,7 +34,13 @@ function CommentForm({ headers, postId, refetch }) {
         onChange={onChange}
         value={comment}
       />
-      <input type="submit" value="게시" className={styles.submit} />
+      <button
+        type="submit"
+        className={styles.submit}
+        disabled={!comment ? true : false}
+      >
+        게시
+      </button>
     </form>
   );
 }

@@ -1,0 +1,24 @@
+.form {
+  display: flex;
+  align-items: center;
+  border-top: solid 1px #dfdfdf;
+  height: 56px;
+  .text {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    width: 554px;
+    font-size: 14px;
+    &::placeholder {
+      color: #8e8e8e;
+    }
+  }
+  .submit {
+    border: none;
+    background-color:#fff;
+    color:  #0095f6;
+    &:disabled {
+      color: #a0c5e8;
+    }
+  }
+}

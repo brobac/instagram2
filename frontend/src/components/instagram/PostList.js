@@ -24,24 +24,23 @@ function PostList() {
     method: "get",
     headers,
   });
+  console.log(postlist);
 
-  // if (loading) return <div>로딩중..</div>;
-  // if (error) return <div>에러가 발생했습니다</div>;
-  // if (!postlist) return null;
+  if (loading) return <div>로딩중..</div>;
+  if (error) return <div>에러가 발생했습니다</div>;
+  if (!postlist) return null;
 
   return (
     <div>
-      <Story>
-        {postlist &&
-          postlist.map((post) => (
-            <PostCard
-              post={post}
-              key={post.id}
-              refetch={refetch}
-              headers={headers}
-            />
-          ))}
-      </Story>
+      {postlist &&
+        postlist.map((post) => (
+          <PostCard
+            post={post}
+            key={post.id}
+            refetch={refetch}
+            headers={headers}
+          />
+        ))}
     </div>
   );
 }
