@@ -1,0 +1,7 @@
+body {background-color: #fafafa;}
+
+
+@media (max-width: 875px) {
+	.noiphone {display: none;}
+}
+

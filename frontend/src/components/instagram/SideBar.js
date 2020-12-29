@@ -11,7 +11,22 @@ function SideBar() {
   } = useAppContext();
   const headers = { Authorization: `JWT ${jwtToken}` };
   const [userInfo, setUserInfo] = useState({});
-  console.log(username);
+  const [userList, setUserList] = useState([]);
+  console.log(userList);
+  useEffect(() => {
+    Axios({
+      url: `http://192.168.0.8:8080/accounts/suggestion/`,
+      method: "GET",
+      headers,
+    })
+      .then((response) => {
+        setUserList(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   useEffect(() => {
     Axios({
       url: `http://192.168.0.8:8080/accounts/${username}/`,
@@ -44,7 +59,7 @@ function SideBar() {
           <a className={style.myprofname_a} href="#">
             {userInfo.username}
           </a>
-          <p className={style.myname}>김현석</p>
+          <p className={style.myname}>{userInfo.username}</p>
         </div>
         <div className={style.transfer}>
           <a href="#">전환</a>
