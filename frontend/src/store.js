@@ -38,7 +38,7 @@ const reducer = (prevState, action) => {
   }
 };
 
-export const AppProvider = ({ children }) => {
+export default function AppProvider({ children }) {
   const jwtToken = getStorageItem("jwtToken", "");
   const username = getStorageItem("username", "");
   const [store, dispatch] = useReducerWithSideEffects(reducer, {
@@ -51,7 +51,7 @@ export const AppProvider = ({ children }) => {
       {children}
     </AppContext.Provider>
   );
-};
+}
 
 export const useAppContext = () => useContext(AppContext);
 

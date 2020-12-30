@@ -7,15 +7,15 @@ export default function LoginRequiredRoute({
   ...kwargs
 }) {
   const {
-    store: { isAuthenticate },
+    store: { isAuthenticated },
   } = useAppContext();
 
-  console.log("isAuthenticate: ", isAuthenticate);
+  console.log("isAuthenticate: ", isAuthenticated);
   return (
     <Route
       {...kwargs}
       render={(props) => {
-        if (isAuthenticate) {
+        if (isAuthenticated) {
           return <Component {...props} />;
         } else {
           return (

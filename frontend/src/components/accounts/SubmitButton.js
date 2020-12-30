@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./SubmitButton.module.css";
+import style from "./SubmitButton.module.scss";
 import classNames from "classnames";
 
 function SubmitButton({ text, className, inputs }) {

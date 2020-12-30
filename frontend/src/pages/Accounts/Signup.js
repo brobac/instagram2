@@ -69,6 +69,7 @@ function Signup() {
               <span>Facebook으로 로그인</span>
             </>
           }
+          inputs={true}
         />
         <And />
         <form onSubmit={onSubmit}>
@@ -98,7 +99,11 @@ function Signup() {
             name="password"
             onChange={onChange}
           />
-          <SubmitButton text="가입" className={style.joinBtn} />
+          <SubmitButton
+            text="가입"
+            inputs={(inputs.email, inputs.phone_number, inputs.password)}
+            className={style.joinBtn}
+          />
           {/* <div>
             {fieldErrors === true
               ? fieldErrors.username[0]
