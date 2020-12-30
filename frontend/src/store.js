@@ -7,41 +7,44 @@ import useReducerWithSideEffects, {
 
 //side-effect가 있을 때는 UpdateWithSideEffect, 없을 때는 Update 사용
 
-const initialState = {
-  jwtToken: "",
-};
-
 const AppContext = createContext();
 
 const reducer = (prevState, action) => {
-  if (action.type === SET_TOKEN) {
-    const { payload: jwtToken } = action;
-    const newState = { ...prevState, jwtToken, isAuthenticate: true };
+  const { type, payload } = action;
+  if (type === SET_TOKEN) {
+    const newState = {
+      ...prevState,
+      jwtToken: payload.token,
+      isAuthenticated: true,
+      username: payload.username,
+    };
     return UpdateWithSideEffect(newState, (state, dispatch) => {
-      setStorageItem("jwtToken", jwtToken);
+      setStorageItem("jwtToken", payload.token);
+      setStorageItem("username", payload.username);
     });
-  } else if (action.type === DELETE_TOKEN) {
+  } else if (type === DELETE_TOKEN) {
     const newState = {
       ...prevState,
       jwtToken: "",
-      isAuthenticate: false,
+      isAuthenticated: false,
+      username: "",
     };
     return UpdateWithSideEffect(newState, (state, dispatch) => {
       setStorageItem("jwtToken", "");
+      setStorageItem("username", "");
     });
+  } else {
+    return prevState;
   }
-
-  return prevState;
 };
 
 export default function AppProvider({ children }) {
   const jwtToken = getStorageItem("jwtToken", "");
+  const username = getStorageItem("username", "");
   const [store, dispatch] = useReducerWithSideEffects(reducer, {
-    jwtToken,
-    isAuthenticate: jwtToken.length > 0,
-    //useRudecer는 3번째파라미터에 어떤 값을 읽어오는 초기화 함수를 지원해줌
-    //reducer의 초기값으로 jwtToken값을 읽어오는 로직
-    //useReducerWithSideEffects는 initfunction을 지원안해줘서 두번째 파라미터로 바로넣어서 초기값을 만들어줌
+    jwtToken: jwtToken,
+    isAuthenticated: jwtToken.length > 0,
+    username: username,
   });
   return (
     <AppContext.Provider value={{ store, dispatch }}>
@@ -57,6 +60,11 @@ const SET_TOKEN = "APP/SET_TOKEN";
 const DELETE_TOKEN = "APP/DELETE_TOKEN";
 
 //Action Creators
-export const setToken = (token) => ({ type: SET_TOKEN, payload: token });
-//{ type: SET_TOKEN, payload: token }값들이 reducer함수에 action에 실려서 바로 reducer가 실행됨
+export const setToken = (token, username) => ({
+  type: SET_TOKEN,
+  payload: {
+    token: token,
+    username: username,
+  },
+});
 export const deleteToken = () => ({ type: DELETE_TOKEN });
