@@ -1,0 +1,47 @@
+.userBox{
+  display: flex;
+  width: 321px;
+  padding: 8px 16px 8px 0;
+  margin-bottom: 15px;
+  .userAvatar {
+    img{
+      width: 33px;
+      border-radius:50%;
+  }
+}
+.userCont{
+  .userName {
+    width: 200px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #000000;
+    margin-left: 15px;
+  }
+  .userSub {
+    width: 200px;
+    font-size: 12px;
+    color: #8e8e8e;
+    padding-top: 7px;
+    margin-left: 15px;
+  }
+}
+  
+  .follow {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color:#42a5f5;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .following {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color:#8e8e8e;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}

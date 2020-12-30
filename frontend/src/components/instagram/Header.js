@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import instaicon from "../../assets/instaicon.png";
 import style from "./Header.module.scss";
@@ -15,9 +15,33 @@ import {
   FaRegCompass,
   FaRegHeart,
 } from "react-icons/fa";
-import profile from "../../assets/profile.jpg";
+import profile from "../../assets/useravatar.jpg";
+import { useAppContext } from "../../store";
+import Axios from "axios";
 
 function Header() {
+  const {
+    store: { jwtToken, username },
+  } = useAppContext();
+  const headers = { Authorization: `JWT ${jwtToken}` };
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    Axios({
+      url: `http://192.168.0.8:8080/accounts/${username}/`,
+      method: "GET",
+      headers,
+    })
+      .then((response) => {
+        setUserInfo({
+          ...response.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const menu = (
     <Menu>
       <Menu.Item className={style.menu_items}>
@@ -85,7 +109,11 @@ function Header() {
               placement="bottomRight"
               trigger={["click"]}
             >
-              <img className={style.profile} src={profile} alt="profile" />
+              <img
+                className={style.profile}
+                src={!userInfo.avatar ? profile : userInfo.avatar}
+                alt="profile"
+              />
             </Dropdown>
           </div>
         </div>

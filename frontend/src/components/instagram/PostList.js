@@ -3,6 +3,9 @@ import styled from "styled-components";
 import PostCard from "./PostCard";
 import { useAppContext } from "../../store";
 import useAxios from "axios-hooks";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import style from "./PostList.module.scss";
+import { Link } from "react-router-dom";
 
 const Story = styled.div`
   border: 1px solid #bdbdbd;
@@ -32,6 +35,11 @@ function PostList() {
 
   return (
     <div>
+      <div className={style.postBtn}>
+        <Link>
+          <AiOutlinePlusCircle color="afafaf" size={50} />
+        </Link>
+      </div>
       {postlist &&
         postlist.map((post) => (
           <PostCard

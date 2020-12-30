@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import style from "./SideBar.module.scss";
 import { useAppContext } from "../../store";
 import Axios from "axios";
-import profile from "../../assets/profile.jpg";
+import profile from "../../assets/useravatar.jpg";
 import friend from "../../assets/friend.jpg";
+import SuggestionCard from "./SuggestionCard";
 
 function SideBar() {
   const {
@@ -11,22 +12,7 @@ function SideBar() {
   } = useAppContext();
   const headers = { Authorization: `JWT ${jwtToken}` };
   const [userInfo, setUserInfo] = useState({});
-  const [userList, setUserList] = useState([]);
-  console.log(userList);
-  useEffect(() => {
-    Axios({
-      url: `http://192.168.0.8:8080/accounts/suggestion/`,
-      method: "GET",
-      headers,
-    })
-      .then((response) => {
-        setUserList(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+
   useEffect(() => {
     Axios({
       url: `http://192.168.0.8:8080/accounts/${username}/`,
@@ -37,7 +23,6 @@ function SideBar() {
         setUserInfo({
           ...response.data,
         });
-        console.log(userInfo);
       })
       .catch((error) => {
         console.log(error);
@@ -65,86 +50,7 @@ function SideBar() {
           <a href="#">전환</a>
         </div>
       </div>
-      <div className={style.recommend}>
-        <div className={style.recom_top}>
-          <p>회원님을 위한 추천</p>
-          <a href="#">모두보기</a>
-        </div>
-        <div className={style.recom_friend}>
-          <ul>
-            <li>
-              <a className={style.friendimg} href="#">
-                <img src={friend} alt="친구1" />
-              </a>
-              <div className={style.namebox}>
-                <a className={style.friendname} href="#">
-                  ji_h00n2
-                </a>
-                <p className={style.followyou}>Follows you</p>
-              </div>
-              <a className={style.follow} href="#">
-                팔로우
-              </a>
-            </li>
-            <li>
-              <a className={style.friendimg} href="#">
-                <img src={friend} alt="친구1" />
-              </a>
-              <div className={style.namebox}>
-                <a className={style.friendname} href="#">
-                  ji_h00n2
-                </a>
-                <p className={style.followyou}>Follows you</p>
-              </div>
-              <a className={style.follow} href="#">
-                팔로우
-              </a>
-            </li>
-            <li>
-              <a className={style.friendimg} href="#">
-                <img src={friend} alt="친구1" />
-              </a>
-              <div className={style.namebox}>
-                <a className={style.friendname} href="#">
-                  ji_h00n2
-                </a>
-                <p className={style.followyou}>Follows you</p>
-              </div>
-              <a className={style.follow} href="#">
-                팔로우
-              </a>
-            </li>
-            <li>
-              <a className={style.friendimg} href="#">
-                <img src={friend} alt="친구1" />
-              </a>
-              <div className={style.namebox}>
-                <a className={style.friendname} href="#">
-                  ji_h00n2
-                </a>
-                <p className={style.followyou}>Follows you</p>
-              </div>
-              <a className={style.follow} href="#">
-                팔로우
-              </a>
-            </li>
-            <li>
-              <a className={style.friendimg} href="#">
-                <img src={friend} alt="친구1" />
-              </a>
-              <div className={style.namebox}>
-                <a className={style.friendname} href="#">
-                  ji_h00n2
-                </a>
-                <p className={style.followyou}>Follows you</p>
-              </div>
-              <a className={style.follow} href="#">
-                팔로우
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <SuggestionCard />
     </div>
   );
 }
