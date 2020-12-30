@@ -1,7 +1,12 @@
 import React from "react";
-import AppLayouts from "../../components/instagram/AppLayout";
+import ProfilePage from "../../components/accounts/ProfilePage";
+import AppLayout from "../../components/instagram/AppLayout";
 function Profile() {
-  return <AppLayouts></AppLayouts>;
+  return (
+    <AppLayout>
+      <ProfilePage />
+    </AppLayout>
+  );
 }
 
 export default Profile;
