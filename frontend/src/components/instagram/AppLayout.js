@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./AppLayout.module.scss";
-import Footer from "./Footer";
 import Header from "./Header";
 function AppLayout({ children }) {
   return (
@@ -11,7 +10,6 @@ function AppLayout({ children }) {
       <section id={style.contents}>
         <div className={style.container}>{children}</div>
       </section>
-      <Footer />
     </div>
   );
 }

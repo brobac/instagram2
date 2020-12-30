@@ -2,7 +2,9 @@
 .logout{width: 235px; height: 37px;}
 
 .header{
-  
+  z-index: 999;
+  width: 100%;
+  position: fixed;
   display: flex;
   justify-content: center;
   height: 54px;

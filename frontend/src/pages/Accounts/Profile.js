@@ -1,7 +1,7 @@
 import React from "react";
-
+import AppLayouts from "../../components/instagram/AppLayout";
 function Profile() {
-  return <div></div>;
+  return <AppLayouts></AppLayouts>;
 }
 
 export default Profile;

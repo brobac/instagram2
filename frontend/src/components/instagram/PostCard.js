@@ -1,24 +1,45 @@
 import React, { useState } from "react";
 import styles from "./PostCard.module.scss";
-import { BsHeart, BsFillHeartFill, BsChat, BsBookmark } from "react-icons/bs";
+import {
+  BsHeart,
+  BsFillHeartFill,
+  BsChat,
+  BsBookmark,
+  BsLink45Deg,
+} from "react-icons/bs";
 import { MdShare, MdAccountCircle } from "react-icons/md";
 import Axios from "axios";
 import useAxios from "axios-hooks";
 import Comment from "./Comment";
 import { Link } from "react-router-dom";
 import CommentForm from "./CommentForm";
+import { FiMoreHorizontal } from "react-icons/fi";
+import Modal from "./Modal";
+import PostMore from "./PostMore";
 
 function PostCard({ post, refetch, headers }) {
   const { id, author, caption, photo, is_like, how_like, created_at } = post;
   const { username, avatar } = author;
   const [like, setLike] = useState({ is_like: is_like, how_like: how_like });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [{ data: commentList, error, loading }, commentRefetch] = useAxios({
     url: `http://192.168.0.8:8080/api/post/${id}/comment/`,
     headers,
   });
 
-  const handlelike = () => {
+  const OpenMore = (e) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+  const CloseMore = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = "unset";
+  };
+
+  const handlelike = (e) => {
+    e.preventDefault();
     const method = like.is_like === true ? "delete" : "post";
     Axios({
       url: `http://192.168.0.8:8080/api/post/${id}/like/`,
@@ -36,6 +57,7 @@ function PostCard({ post, refetch, headers }) {
               data: { is_like: is_like, how_like: how_like },
             } = response;
             setLike({ is_like: is_like, how_like: how_like });
+            console.log(post);
           })
           .catch((error) => {
             console.log(error);
@@ -45,7 +67,6 @@ function PostCard({ post, refetch, headers }) {
         console.log(error);
       });
   };
-
   return (
     <div className={styles.postcard}>
       <div className={styles.list}>
@@ -57,24 +78,30 @@ function PostCard({ post, refetch, headers }) {
           <a className={styles.nickname} href="#">
             {username}
           </a>
-          <a className={styles.more} href="#">
-            ...
+          <a className={styles.more} href="#" onClick={OpenMore}>
+            <FiMoreHorizontal />
           </a>
+          <Modal isOpen={isModalOpen} close={CloseMore}>
+            <PostMore close={CloseMore} />
+          </Modal>
         </div>
         {/* <!-- //top --> */}
-
         <div className={styles.img}>
           <img src={photo} alt="postlistimg" />
         </div>
         {/* <!-- //img --> */}
-
         <div className={styles.posticon}>
           <div className={styles.posticon_left}>
-            {like.is_like === true ? (
-              <BsFillHeartFill style={{ color: "red" }} onClick={handlelike} />
-            ) : (
-              <BsHeart onClick={handlelike} />
-            )}
+            <a href="#">
+              {like.is_like === true ? (
+                <BsFillHeartFill
+                  style={{ color: "red" }}
+                  onClick={handlelike}
+                />
+              ) : (
+                <BsHeart onClick={handlelike} />
+              )}
+            </a>
             <a href="#">
               <BsChat />
             </a>
@@ -115,11 +142,6 @@ function PostCard({ post, refetch, headers }) {
                 />
               ) : null
             )}
-
-          {/* {/* <a className={styles.com_writer} href="#">
-            iguegumwang
-          </a> */}
-          {/* <p className={styles.ptag}>유트브 볼 때마다 감탄 ㅠ</p> */}
           <a className={styles.date} href="#">
             {created_at}
           </a>

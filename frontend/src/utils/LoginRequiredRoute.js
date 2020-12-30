@@ -10,7 +10,7 @@ export default function LoginRequiredRoute({
     store: { isAuthenticated },
   } = useAppContext();
 
-  console.log("isAuthenticate: ", isAuthenticated);
+  console.log("isAuthenticated: ", isAuthenticated);
   return (
     <Route
       {...kwargs}

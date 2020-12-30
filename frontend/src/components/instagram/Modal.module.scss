@@ -1,0 +1,43 @@
+.ModalOverlay {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+
+.Modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  border-radius: 4%;
+  background-color: #fff;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16);
+  z-index: 1000;
+
+  button {
+    width: 400px; height: 48px;
+    border: none;
+    outline: none;
+    background: none;
+    border-top: 1px solid #dbdbdb;
+    &:first-child {
+      border-top: none;
+      &:active {
+        border-radius: 16px 16px 0 0;
+      }
+    }
+    &:last-child:active {
+      border-radius: 0 0 16px 16px;
+    }
+    &:active {
+      outline: none;
+      background-color: #eaeaea;
+    }
+
+  }
+}

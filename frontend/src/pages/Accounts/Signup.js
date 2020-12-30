@@ -16,6 +16,7 @@ function Signup() {
     username: "",
     password: "",
   });
+  const [userList, setUserList] = useState();
   const [fieldErrors, setFieldErrors] = useState({});
 
   const history = useHistory();
