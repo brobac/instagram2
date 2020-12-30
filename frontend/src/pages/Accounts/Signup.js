@@ -16,6 +16,7 @@ function Signup() {
     username: "",
     password: "",
   });
+  const [userList, setUserList] = useState();
   const [fieldErrors, setFieldErrors] = useState({});
 
   const history = useHistory();
@@ -98,7 +99,7 @@ function Signup() {
             name="password"
             onChange={onChange}
           />
-          <SubmitButton text="가입" className={style.joinBtn} />
+          <SubmitButton inputs={inputs} text="가입" className={style.joinBtn} />
           {/* <div>
             {fieldErrors === true
               ? fieldErrors.username[0]

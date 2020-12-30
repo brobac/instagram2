@@ -6,7 +6,7 @@ import Root from "./pages/index";
 import reportWebVitals from "./reportWebVitals";
 import "antd/dist/antd.css";
 import "../src/assets/reset.css";
-import AppProvider from "./store";
+import { AppProvider } from "./store";
 
 ReactDOM.render(
   <AppProvider>
