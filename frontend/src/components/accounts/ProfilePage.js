@@ -13,6 +13,8 @@ import {
 import { BsBookmark } from "react-icons/bs";
 import Axios from "axios";
 import { useAppContext } from "../../store";
+import styled from "styled-components";
+import TabMenu from "./TabMenu";
 
 function ProfilePage() {
   const {
@@ -34,6 +36,30 @@ function ProfilePage() {
         console.log(error);
       });
   }, []);
+  // const tab_styled = styled.div``;
+
+  // const initialTodos = [
+  //   {
+  //     id: 1,
+  //     isClicked: true,
+  //   },
+  //   {
+  //     id: 2,
+  //     isClicked: false,
+  //   },
+  //   {
+  //     id: 3,
+  //     isClicked: false,
+  //   },
+  //   {
+  //     id: 4,
+  //     isClicked: false,
+  //   },
+  // ];
+  const [activeTab, setActiveTab] = useState(0);
+  const handleClick = (id) => {
+    setActiveTab(id);
+  };
 
   return (
     <div className={styles.profile}>
@@ -65,35 +91,7 @@ function ProfilePage() {
       {/* <!-- //header --> */}
       <div className={styles.posts}>
         <div className={styles.postsTitle}>
-          <div className={styles.postMenu}>
-            <Link to="/profile">
-              <div className={styles.postMenuLink}>
-                <TableOutlined /> <span>게시물</span>
-              </div>
-            </Link>
-          </div>
-          <div className={styles.postMenu}>
-            <Link to="/profile/channel">
-              <div className={styles.postMenuLink}>
-                <VideoCameraOutlined /> <span>IGTV</span>
-              </div>
-            </Link>
-          </div>
-
-          <div className={styles.postMenu}>
-            <Link to="/profile/saved">
-              <div className={styles.postMenuLink}>
-                <BsBookmark /> <span>저장됨</span>
-              </div>
-            </Link>
-          </div>
-          <div className={styles.postMenu}>
-            <Link to="/profile/tagged">
-              <div className={styles.postMenuLink}>
-                <ContactsOutlined /> <span>태그됨</span>
-              </div>
-            </Link>
-          </div>
+          <TabMenu TabMenuHandler={handleClick} activeTab={activeTab} />
         </div>
       </div>
     </div>

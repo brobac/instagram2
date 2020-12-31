@@ -7,8 +7,8 @@ import Home from "./Home";
 function Root() {
   return (
     <div>
-      <LoginRequiredRoute exact path="/profile" component={Profile} />
-      <LoginRequiredRoute exact path="/" component={Home} />
+      <Route path="/profile" component={Profile} />
+      <Route exact path="/" component={Home} />
       <Route path="/accounts" component={AccountRoute} />
     </div>
   );
