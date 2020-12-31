@@ -1,0 +1,24 @@
+.mypost{
+	width: 100%;
+	display:flex;
+	.leftbox{
+		
+		img{
+			width: 380px;
+		}
+	}
+
+	.rightbox{
+		display:flex;
+		flex-direction: column;
+		width: 100%;
+		padding-left:30px;
+		background: white;
+		justify-content: center;
+		align-items: center;
+
+		.share{
+			font-size: 18px;
+		}
+	}
+}

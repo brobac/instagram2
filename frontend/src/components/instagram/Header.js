@@ -15,7 +15,7 @@ import {
   FaRegCompass,
   FaRegHeart,
 } from "react-icons/fa";
-import profile from "../../assets/useravatar.jpg";
+import useravatar from "../../assets/useravatar.jpg";
 import { useAppContext } from "../../store";
 import Axios from "axios";
 
@@ -111,7 +111,7 @@ function Header() {
             >
               <img
                 className={style.profile}
-                src={!userInfo.avatar ? profile : userInfo.avatar}
+                src={!userInfo.avatar ? useravatar : userInfo.avatar}
                 alt="profile"
               />
             </Dropdown>

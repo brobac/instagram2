@@ -7,7 +7,7 @@ import Instagram from "./Instagram";
 import AppDownBox from "./AppDownBox";
 import SubmitButton from "./SubmitButton";
 import Axios from "axios";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { setToken, useAppContext } from "../../store";
 import classNames from "classnames";
 
@@ -75,7 +75,10 @@ function LoginCard({ className }) {
               name="password"
               onChange={onChange}
             ></Input>
-            <SubmitButton text={"로그인"} inputs={inputs}></SubmitButton>
+            <SubmitButton
+              text={"로그인"}
+              inputs={(inputs.email, inputs.password)}
+            ></SubmitButton>
             <And className={style.and}></And>
           </div>
           <button className={style.facebook}>
@@ -91,9 +94,9 @@ function LoginCard({ className }) {
         <div>
           <p className={style.joinAsk}>
             계정이 없으신가요?
-            <a href="http://www.naver.com" className={style.joinLink}>
+            <Link to="/accounts/signup/" className={style.joinLink}>
               가입하기
-            </a>
+            </Link>
           </p>
         </div>
       </WhiteBox>
