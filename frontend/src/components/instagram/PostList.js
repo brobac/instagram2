@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import PostCard from "./PostCard";
 import { useAppContext } from "../../store";
@@ -36,7 +36,7 @@ function PostList() {
   return (
     <div>
       <div className={style.postBtn}>
-        <Link>
+        <Link to="/posting">
           <AiOutlinePlusCircle color="afafaf" size={50} />
         </Link>
       </div>

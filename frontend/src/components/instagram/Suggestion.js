@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 import defaultAvatar from "../../assets/useravatar.jpg";
 import Axios from "axios";
 
-function Suggestion({ user }) {
+function Suggestion({ user, refetch }) {
   const {
     store: { jwtToken },
   } = useAppContext();
@@ -22,7 +22,7 @@ function Suggestion({ user }) {
       data: { username: userInfo.username },
       headers,
     })
-      .then(console.log("팔로우성공"))
+      .then((response) => refetch())
       .catch((error) => console.error(error));
   };
 

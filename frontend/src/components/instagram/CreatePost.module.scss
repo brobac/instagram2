@@ -1,0 +1,107 @@
+.postBox {
+  display: flex;
+  align-items: center;
+  max-width: 975px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid #dbdbdb ;
+  border-radius: 5px;
+
+  .postForm {
+    .imgPrev {
+      width: 614px;
+      height: auto;
+      line-height: 700px;
+      text-align: center;
+      background-color: #fafafa;
+      border: 1px solid #dbdbdb;
+      border-radius: 5px;
+      color: #8e8e8e;
+      font-size: 30px;
+    }
+    .filebox {
+      position: relative;
+      height: 40px;
+      margin-top: 20px;
+      .fileLabel {
+        color: #999;
+        background-color: #fdfdfd;
+        cursor: pointer;
+        border: 1px solid #dbdbdb;
+        line-height: 40px;
+        width: 80px; height: 40px;
+        display: inline-block;
+        font-size: 15px;
+        text-align: center;
+        margin-left: 10px;
+        border-radius: 4px;
+        &:hover {
+          filter: brightness(90%);
+          transition: 0.3s ease;
+        }
+      }
+      .file {
+        display: none;
+      }
+      .submitBtn {
+        background-color: #0095f6;
+        color: #ffffff;
+        letter-spacing: 2px;
+        border: none;
+        width: 80px;
+        height: 40px;
+        border-radius: 4px;
+        padding: 8px 4px;
+        font-size: 15px;
+        font-weight: 400;
+        position: absolute;
+        right: 10px;
+        &:hover {
+          filter: brightness(90%);
+          transition: 0.3s ease;
+        }
+      }
+    }
+  
+    .caption {
+      display: block;
+      resize: none;
+      width: 614px;
+      height: 400px;
+      background-color: #fafafa;
+      border: 1px solid #dbdbdb;
+      outline: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+    .location {
+      display: block;
+      outline: none;
+      width: 614px;
+      margin-top: 10px;
+    }
+    
+
+    }
+    .imgPrevBox {
+      box-sizing: border-box;
+      padding-top: 40px;
+      width: 200px;
+      height: 500px;
+      background: none;
+      overflow-y: scroll;
+      .imgPrev {
+        background-color: #fafafa;
+        width: 140px;
+        height: 140px;
+        border: 1px solid #dbdbdb;
+        border-radius: 4px;
+        margin: 0 auto 7px;
+        overflow: hidden;
+        img {
+          width: 140px; height: 140px;
+        }
+      }
+    }
+  }
