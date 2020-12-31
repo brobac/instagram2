@@ -5,17 +5,14 @@ import Signup from "./Signup";
 import AccountLayout from "../../components/accounts/AccountLayout";
 import Profile from "./Profile";
 import LoginRequiredRoute from "../../utils/LoginRequiredRoute";
+import Logout from "./Logout";
 
 function AccountRoute({ match }) {
   return (
     <AccountLayout>
-      <LoginRequiredRoute
-        exact
-        path={match.url + "/profile"}
-        component={Profile}
-      />
       <Route exact path={match.url + "/login"} component={Login} />
       <Route exact path={match.url + "/signup"} component={Signup} />
+      <Route exact path={match.url + "/logout"} component={Logout} />
     </AccountLayout>
   );
 }

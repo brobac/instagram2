@@ -17,7 +17,7 @@ const Story = styled.div`
 
 function PostList() {
   const {
-    store: { jwtToken },
+    store: { jwtToken, username },
   } = useAppContext();
 
   const headers = { Authorization: `JWT ${jwtToken}` };
